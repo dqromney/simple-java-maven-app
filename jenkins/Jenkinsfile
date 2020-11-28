@@ -11,7 +11,8 @@ pipeline {
                 jdk 'JDK11.0.9'
             }
             steps {
-                sh 'mvn -e -B -DskipTests clean package'
+                sh 'mvn -v'
+                sh 'mvn -X -B -DskipTests clean package'
             }
         }
         stage('Test') {
@@ -19,7 +20,7 @@ pipeline {
                 jdk 'JDK11.0.9'
             }
             steps {
-                sh 'mvn test'
+                sh 'mvn -X test'
             }
             post {
                 always {
